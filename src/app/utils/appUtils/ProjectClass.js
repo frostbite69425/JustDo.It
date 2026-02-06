@@ -1,33 +1,58 @@
+import logMessage from "./logMessage.js";
+import ToDo from "./toDoClass.js";
+
 export default class Project {
   #projectToDos;
   #projectName;
+
+  static projectArray = [];
+
+  static getProjectArray = () => Project.projectArray;
+
   constructor(name) {
     this.#projectName = name;
     this.#projectToDos = [];
+    Project.projectArray.push(this);
   }
 
   get projectName() {
     return this.#projectName;
   }
 
-  set projectName(name) {
-    this.#projectName = name;
+  set projectName(text) {
+    this.#projectName = text;
   }
 
-  addToDo(...todos) {
-    for (const todo of todos) {
-      this.#projectToDos.push(todo);
+  addToDo(todo) {
+    if (this.#projectToDos.includes(todo)) {
+      logMessage("This task is already part of the current project.");
+      return;
     }
+    this.#projectToDos.push(todo);
   }
 
-  removeToDo(...todos) {
-    for (const todo of todos) {
-      const index = this.#projectToDos.indexOf(todo.todoTitle);
-      this.#projectToDos.splice(index, 1);
+  removeToDo(todo) {
+    if (!this.#projectToDos.includes(todo)) {
+      logMessage("Provided task is not part of this project!");
+      return;
     }
+    const index = this.#projectToDos.indexOf(todo);
+    this.#projectToDos.splice(index, 1);
+  }
+
+  createNewToDo(title, prio, date) {
+    const newToDo = new ToDo(title, prio, date);
+    this.addToDo(newToDo);
   }
 
   get projectToDos() {
     return this.#projectToDos;
+  }
+
+  get ProjectForStorage() {
+    console.log(this);
+    console.log(JSON.stringify(this));
+
+    return JSON.stringify(this);
   }
 }

@@ -1,4 +1,4 @@
-# JustDo.it
+# JustDo.It
 
 A simple, clean, and intuitive to-do list application built as part of The Odin Project curriculum. JustDo.it helps you stay organized by allowing you to create and manage tasks using browser local storage.
 
@@ -31,7 +31,7 @@ A simple, clean, and intuitive to-do list application built as part of The Odin 
 Through this project, I practiced and reinforced:
 
 - Organizing code with modules
-- Using factory functions and/or classes
+- Using factory functions and classes
 - Manipulating the DOM dynamically
 - Working with localStorage to persist data
 - Structuring a JavaScript application

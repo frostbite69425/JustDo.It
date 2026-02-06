@@ -1,21 +1,17 @@
 import subTask from "./subTaskClass.js";
 
-const setSubTasks = (todo, ...subTaskTitles) => {
-  for (const title of subTaskTitles) {
-    const newSubTask = new subTask(title);
-    todo.subTasks = newSubTask;
+const setSubTasks = (todo, title) => {
+  const newSubTask = new subTask(title);
+  todo.subTasks = newSubTask;
+};
+
+const deleteSubTasks = (todo, Title) => {
+  const subTaskArray = todo.subTasks;
+  for (const task of subTaskArray) {
+    if (task.subTaskTitle == Title) {
+      todo.delSubTask(task);
+    }
   }
 };
 
-const checkSubTaskDoneState = (subTaskArr) => {
-  if (
-    subTaskArr.filter((task) => task.subTaskDoneState == true).length ==
-    subTaskArr.length
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-export { setSubTasks, checkSubTaskDoneState };
+export { setSubTasks, deleteSubTasks };

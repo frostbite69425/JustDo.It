@@ -1,6 +1,5 @@
 import { add, isFuture, isDate } from "date-fns";
 import log from "./logMessage.js";
-import { checkSubTaskDoneState } from "./subTasksUtility.js";
 
 class ToDo {
   #title;
@@ -10,6 +9,7 @@ class ToDo {
   #doneState;
   #notes;
   #subTaskArr = [];
+
   constructor(title, priority, date) {
     this.#title = title;
     this.#priority = priority;
@@ -19,10 +19,6 @@ class ToDo {
       this.#dueDate = date;
     }
     this.#doneState = false;
-  }
-
-  #setDoneState(state) {
-    this.#doneState = state;
   }
 
   get todoDoneState() {
@@ -85,10 +81,9 @@ class ToDo {
     this.#subTaskArr.push(subtask);
   }
 
-  checkDoneState() {
-    if (this.#subTaskArr.length > 0) {
-      this.#setDoneState(checkSubTaskDoneState(this.#subTaskArr));
-    }
+  delSubTask(subtask) {
+    const index = this.#subTaskArr.indexOf(subtask);
+    this.#subTaskArr.splice(index, 1);
   }
 }
 

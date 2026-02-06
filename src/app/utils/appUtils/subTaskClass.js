@@ -1,6 +1,7 @@
 export default class Subtask {
   #title;
   #subTaskDoneState;
+
   constructor(title) {
     this.#title = title;
     this.#subTaskDoneState = false;
