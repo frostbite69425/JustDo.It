@@ -73,3 +73,37 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+:root {
+  --bg-dark: oklch(0.1 0 274);
+  --bg: oklch(0.15 0 274);
+  --bg-light: oklch(0.2 0 274);
+  --text: oklch(0.96 0 274);
+  --text-muted: oklch(0.76 0 274);
+  --highlight: oklch(0.5 0 274);
+  --border: oklch(0.4 0 274);
+  --border-muted: oklch(0.3 0 274);
+  --primary: oklch(0.76 0.1 274);
+  --secondary: oklch(0.76 0.1 94);
+  --danger: oklch(0.7 0.05 30);
+  --warning: oklch(0.7 0.05 100);
+  --success: oklch(0.7 0.05 160);
+  --info: oklch(0.7 0.05 260);
+}
+
+body.light {
+  --bg-dark: oklch(0.92 0.065 207);
+  --bg: oklch(0.96 0.065 207);
+  --bg-light: oklch(1 0.065 207);
+  --text: oklch(0.15 0.13 207);
+  --text-muted: oklch(0.4 0.13 207);
+  --highlight: oklch(1 0.13 207);
+  --border: oklch(0.6 0.13 207);
+  --border-muted: oklch(0.7 0.13 207);
+  --primary: oklch(0.4 0.13 207);
+  --secondary: oklch(0.4 0.13 27);
+  --danger: oklch(0.5 0.13 30);
+  --warning: oklch(0.5 0.13 100);
+  --success: oklch(0.5 0.13 160);
+  --info: oklch(0.5 0.13 260);
+}

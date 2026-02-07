@@ -1,21 +1,33 @@
-function saveToDoToLocalStorage(toDo) {
-  const stringifiedToDo = toDo.ToDoForStorage;
-  localStorage.setItem("todo", stringifiedToDo);
-}
+import Project from "./ProjectClass.js";
+import ToDo from "./toDoClass.js";
 
 function saveProjectToLocalStorage(project) {
-  const stringifiedProject = project.ProjectForStorage;
-  console.log({ project, stringifiedProject });
-  localStorage.setItem("project", stringifiedProject);
+  const stringifiedProject = JSON.stringify(project);
+  localStorage.setItem(project.getProjectName, stringifiedProject);
 }
 
-function getItemFromLocalStorage(item) {
-  const retrievedItem = localStorage.getItem(item);
-  return JSON.parse(retrievedItem);
+function getProjectFromLocalStorage(project) {
+  const retrievedProject = localStorage.getItem(project);
+  const parsedProject = JSON.parse(retrievedProject);
+  Object.setPrototypeOf(parsedProject, Project.prototype);
+
+  const todosInProject = parsedProject.getProjectToDos;
+
+  for (const item of todosInProject) {
+    Object.setPrototypeOf(item, ToDo.prototype);
+  }
+
+  return parsedProject;
 }
 
-export {
-  saveProjectToLocalStorage,
-  saveToDoToLocalStorage,
-  getItemFromLocalStorage,
-};
+function getAllLocalStorageItems() {
+  const localStorageArray = [];
+  for (const key in localStorage) {
+    if (localStorage.hasOwnProperty(key)) {
+      localStorageArray.push(getProjectFromLocalStorage(key));
+    }
+  }
+  return localStorageArray;
+}
+
+export { saveProjectToLocalStorage, getAllLocalStorageItems };

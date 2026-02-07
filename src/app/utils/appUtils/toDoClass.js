@@ -2,88 +2,82 @@ import { add, isFuture, isDate } from "date-fns";
 import log from "./logMessage.js";
 
 class ToDo {
-  #title;
-  #priority;
-  #description;
-  #dueDate;
-  #doneState;
-  #notes;
-  #subTaskArr = [];
+  subTaskArr = [];
 
   constructor(title, priority, date) {
-    this.#title = title;
-    this.#priority = priority;
+    this.title = title;
+    this.priority = priority;
     if (!isDate(date) || !isFuture(date)) {
       log("Not a valid Date!");
     } else {
-      this.#dueDate = date;
+      this.dueDate = date;
     }
-    this.#doneState = false;
+    this.doneState = false;
   }
 
   get todoDoneState() {
-    return this.#doneState;
+    return this.doneState;
   }
 
   toggleTodoDoneState() {
-    this.#doneState = this.#doneState == false ? true : false;
+    this.doneState = this.doneState == false ? true : false;
   }
 
   get todoDueDate() {
-    return this.#dueDate;
+    return this.dueDate;
   }
 
   set todoDueDate(date) {
     if (!isDate(date) || !isFuture(date)) {
       log("Not a valid Date!");
     } else {
-      this.#dueDate = date;
+      this.dueDate = date;
     }
   }
 
   get todoPriority() {
-    return this.#priority;
+    return this.priority;
   }
 
   set todoPriority(text) {
-    this.#priority = text;
+    this.priority = text;
   }
 
   get todoTitle() {
-    return this.#title;
+    return this.title;
   }
 
   set todoTitle(text) {
-    this.#title = text;
+    this.title = text;
   }
 
   set todoDescription(text) {
-    this.#description = text;
+    this.description = text;
   }
 
   get todoDescription() {
-    return this.#description;
+    return this.description;
   }
 
   set todoNotes(userNotes) {
-    this.#notes = userNotes;
+    this.notes = userNotes;
   }
 
   get todoNotes() {
-    return this.#notes;
+    return this.notes;
   }
 
   get subTasks() {
-    return this.#subTaskArr;
+    return this.subTaskArr;
   }
 
   set subTasks(subtask) {
-    this.#subTaskArr.push(subtask);
+    this.subTaskArr.push(subtask);
   }
 
   delSubTask(subtask) {
-    const index = this.#subTaskArr.indexOf(subtask);
-    this.#subTaskArr.splice(index, 1);
+    const index = this.subTaskArr.indexOf(subtask);
+    this.subTaskArr.splice(index, 1);
   }
 }
 
