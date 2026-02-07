@@ -6,6 +6,11 @@ export default class Project {
 
   static getProjectArray = () => Project.projectArray;
 
+  static deleteProjectPermanently = (project) => {
+    const index = Project.projectArray.indexOf(project);
+    Project.projectArray.splice(index, 1);
+  };
+
   constructor(name) {
     this.projectName = name;
     this.projectToDos = [];

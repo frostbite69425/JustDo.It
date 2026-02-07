@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Google Sans";
+  src: url("./assets/fonts/woff2Fonts/GoogleSansFlex-VariableFont_GRAD\,ROND\,opsz\,slnt\,wdth\,wght.woff2");
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("./assets/fonts/woff2Fonts/Orbitron-VariableFont_wght.woff2");
+}
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,
@@ -89,6 +99,27 @@ h6 {
   --warning: oklch(0.7 0.05 100);
   --success: oklch(0.7 0.05 160);
   --info: oklch(0.7 0.05 260);
+
+  font-size: 10px;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+body {
+  font-family: "Google Sans";
 }
 
 body.light {
@@ -106,4 +137,38 @@ body.light {
   --warning: oklch(0.5 0.13 100);
   --success: oklch(0.5 0.13 160);
   --info: oklch(0.5 0.13 260);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  gap: 2rem;
+  background-color: var(--bg-dark);
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem 0rem;
+  color: var(--text);
+  font-size: clamp(1.2rem, 3.5dvw, 2.3rem);
+
+  > button {
+    position: absolute;
+    right: 0;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--bg);
+    padding: 0.7rem 1.5rem;
+    box-shadow: 2px 5px 2px var(--bg-light);
+    transition: transform ease-in-out 0.3s;
+    cursor: pointer;
+  }
+
+  > button:hover {
+    transform: scale(1.06);
+  }
 }

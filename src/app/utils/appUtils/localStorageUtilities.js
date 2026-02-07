@@ -20,6 +20,10 @@ function getProjectFromLocalStorage(project) {
   return parsedProject;
 }
 
+function removeProjectFromLocalStorage(project) {
+  localStorage.removeItem(project);
+}
+
 function getAllLocalStorageItems() {
   const localStorageArray = [];
   for (const key in localStorage) {
@@ -30,4 +34,8 @@ function getAllLocalStorageItems() {
   return localStorageArray;
 }
 
-export { saveProjectToLocalStorage, getAllLocalStorageItems };
+export {
+  saveProjectToLocalStorage,
+  getAllLocalStorageItems,
+  removeProjectFromLocalStorage,
+};
