@@ -1,10 +1,12 @@
 const makeElementWithClass = (element, className) => {
   const domElement = document.createElement(element);
-  if (className == " ") {
-    return domElement;
+  const classes = className.split(" ");
+  for (const cssClass of classes) {
+    if (cssClass == " ") {
+      return domElement;
+    }
+    domElement.classList.add(cssClass);
   }
-  domElement.classList.add(className);
-
   return domElement;
 };
 

@@ -90,7 +90,7 @@ h6 {
   --bg-light: oklch(0.2 0 274);
   --text: oklch(0.96 0 274);
   --text-muted: oklch(0.76 0 274);
-  --highlight: oklch(0.5 0 274);
+  --highlight: oklch(89.857% 0.00985 16.771);
   --border: oklch(0.4 0 274);
   --border-muted: oklch(0.3 0 274);
   --primary: oklch(0.76 0.1 274);
@@ -99,6 +99,7 @@ h6 {
   --warning: oklch(0.7 0.05 100);
   --success: oklch(0.7 0.05 160);
   --info: oklch(0.7 0.05 260);
+  --hover-highlight: oklch(0% 0 0);
 
   font-size: 10px;
   font-family:
@@ -137,6 +138,7 @@ body.light {
   --warning: oklch(0.5 0.13 100);
   --success: oklch(0.5 0.13 160);
   --info: oklch(0.5 0.13 260);
+  --hover-highlight: oklch(100% 0.00011 271.152);
 }
 
 body {
@@ -171,4 +173,111 @@ header {
   > button:hover {
     transform: scale(1.06);
   }
+}
+
+footer {
+  padding: 2rem;
+  background-color: var(--bg);
+  color: var(--text);
+  border-radius: 15px;
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  button.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 15px;
+    background: var(--bg-light);
+    border-radius: 5px;
+    border: none;
+    border-top: 1px solid var(--highlight);
+    cursor: pointer;
+    transition: 200ms;
+  }
+
+  button.button .text {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1em;
+    transition: 200ms;
+  }
+
+  button.button svg path {
+    transition: transform 200ms ease-in-out;
+  }
+
+  button.button:hover {
+    transform: scale(1.1);
+  }
+
+  button.button svg path {
+    fill: var(--text);
+  }
+}
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--text);
+  align-items: center;
+  background-color: var(--bg);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+
+  h1.projects-page-title {
+    font-family: "Orbitron";
+    font-size: clamp(2rem, 4.5dvw, 3.3rem);
+  }
+
+  .projects-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+.title {
+  font-size: clamp(1.5rem, 3.5dvw, 2.3rem);
+}
+
+.card {
+  background-color: var(--bg-light);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+}
+
+.image {
+  width: 60%;
+}
+
+.btn-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 2rem;
+}
+
+.button {
+  color: var(--text-muted);
+  background-color: var(--bg);
+  border: none;
+  border-top: var(--highlight) 1px solid;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px var(--bg-dark);
+  cursor: pointer;
+  transition: transform ease-in-out 0.3s;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  background-color: var(--highlight);
+  color: var(--hover-highlight);
 }
