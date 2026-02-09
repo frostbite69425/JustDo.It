@@ -6,8 +6,17 @@ function projectContainer() {
   const projectContainer = elementFactory("div", "display-container");
   const title = elementFactory("h1", "projects-page-title title");
   title.insertText("Your Projects");
+  const addNewProjectBtn = elementFactory(
+    "button",
+    "add-new-project-btn button",
+  );
+  addNewProjectBtn.insertText("Add New Project");
   const projectLayoutDiv = elementFactory("div", "projects-container");
-  projectContainer.setChildren(title.domElement, projectLayoutDiv.domElement);
+  projectContainer.setChildren(
+    title.domElement,
+    projectLayoutDiv.domElement,
+    addNewProjectBtn.domElement,
+  );
 
   const totalProjects = Project.projectArray;
   for (const project of totalProjects) {

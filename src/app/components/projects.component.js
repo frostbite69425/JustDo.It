@@ -38,6 +38,11 @@ function projectComponent(project) {
     deleteProjectButton.domElement,
   );
 
+  projectCard.domElement.setAttribute(
+    "data-projectname",
+    project.getProjectName,
+  );
+
   return projectCard;
 }
 
