@@ -1,6 +1,7 @@
 import elementFactory from "../controllers/uiControllers/elementFactory.controller.js";
 import Project from "../utils/appUtils/ProjectClass.js";
 import projectComponent from "./projects.component.js";
+import { getAllLocalStorageItems } from "../utils/appUtils/localStorageUtilities.js";
 
 function projectContainer() {
   const projectContainer = elementFactory("div", "display-container");
@@ -17,6 +18,8 @@ function projectContainer() {
     projectLayoutDiv.domElement,
     addNewProjectBtn.domElement,
   );
+
+  Project.setProjectArray(getAllLocalStorageItems());
 
   const totalProjects = Project.projectArray;
   for (const project of totalProjects) {

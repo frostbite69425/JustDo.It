@@ -119,6 +119,11 @@ h6 {
     sans-serif;
 }
 
+::backdrop {
+  background-color: var(--bg-dark);
+  opacity: 0.85;
+}
+
 body {
   font-family: "Google Sans";
 }
@@ -269,6 +274,37 @@ footer {
   color: var(--hover-highlight);
 }
 
+.modal {
+  margin: auto;
+  max-width: 60%;
+  border-radius: 15px;
+  background-color: var(--bg);
+  border: none;
+  box-shadow: 3px 0.5px 4px var(--blue-border);
+  color: var(--text-muted);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  border-radius: 7px;
+  border: none;
+}
+
 /* SPECIFIC CSS SELECTORS */
 
 .project-image {
@@ -312,10 +348,19 @@ footer {
   background-color: var(--success);
 }
 
-button.edit-project-btn {
+button.edit-project-btn,
+button.confirm-btn {
   background-color: var(--info);
 }
 
-button.delete-project-btn {
+button.delete-project-btn,
+button.cancel-btn {
   background-color: var(--danger);
+}
+
+div.new-project-modal-btn-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: 1fr;
 }

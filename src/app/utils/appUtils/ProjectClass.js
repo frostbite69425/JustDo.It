@@ -6,6 +6,8 @@ export default class Project {
 
   static getProjectArray = () => Project.projectArray;
 
+  static setProjectArray = (array) => (Project.projectArray = array);
+
   static deleteProjectPermanently = (project) => {
     const index = Project.projectArray.indexOf(project);
     Project.projectArray.splice(index, 1);

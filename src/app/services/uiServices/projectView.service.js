@@ -2,6 +2,8 @@ import projectContainer from "../../components/projectContainer.component.js";
 
 import updateListener from "../../utils/uiUtils/updateListener.js";
 import deleteProjectsController from "../../controllers/uiControllers/deleteProjects.controller.js";
+import makeNewProjectModal from "../../components/newProjectModal.component.js";
+import addProjectsController from "../../controllers/uiControllers/addProjects.controller.js";
 
 const projectView = () => {
   const content = document.querySelector(".content");
@@ -9,16 +11,11 @@ const projectView = () => {
     content.removeChild(content.firstChild);
   }
   const container = projectContainer();
-  content.appendChild(container.domElement);
+  const newProjectModal = makeNewProjectModal();
+  content.append(container.domElement, newProjectModal.domElement);
 
   deleteProjectsController();
-
-  const addNewProjectBtn = document.querySelector(".add-new-project-btn");
-  updateListener(addNewProjectBtn, () => {
-    console.log(1);
-  });
-
-  // THE LISTENER WORKS. ADD THE FUNCTION
+  addProjectsController();
 };
 
 export default projectView;

@@ -1,6 +1,6 @@
 import "../styles.css";
-import initPageLoadService from "./services/uiServices/initPageLoad.service.js";
+import initialisePage from "./services/uiServices/initPageLoad.service.js";
 
 (function () {
-  initPageLoadService();
+  initialisePage();
 })();
