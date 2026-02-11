@@ -1,11 +1,10 @@
 import projectContainer from "../../components/projectContainer.component.js";
-
-import updateListener from "../../utils/uiUtils/updateListener.js";
 import deleteProjectsController from "../../controllers/uiControllers/deleteProjects.controller.js";
 import makeNewProjectModal from "../../components/newProjectModal.component.js";
 import addProjectsController from "../../controllers/uiControllers/addProjects.controller.js";
 import makeEditProjectModal from "../../components/editProjectModal.component.js";
 import editProjectsController from "../../controllers/uiControllers/editProjects.controller.js";
+import viewProjectsController from "../../controllers/uiControllers/viewProjects.controller.js";
 
 const projectView = () => {
   const content = document.querySelector(".content");
@@ -25,6 +24,7 @@ const projectView = () => {
   deleteProjectsController();
   addProjectsController();
   editProjectsController();
+  viewProjectsController();
 };
 
 export default projectView;

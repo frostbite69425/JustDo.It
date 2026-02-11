@@ -1,4 +1,5 @@
 import elementFactory from "../controllers/uiControllers/elementFactory.controller.js";
+import projectProgressDiv from "./projectProgressDiv.component.js";
 import illustrationOne from "../../assets/illustrations/illustrationPlanning.svg";
 import illustrationTwo from "../../assets/illustrations/illustrationPlanning2.svg";
 import illustrationThree from "../../assets/illustrations/illustrationPlanning3.svg";
@@ -10,6 +11,8 @@ function projectComponent(project) {
   const projectCard = elementFactory("div", "project-card card");
   const projcetTitle = elementFactory("h1", "project-title title");
   const projectImage = elementFactory("img", "project-image image");
+  const progressDiv = projectProgressDiv(project);
+
   const projectBtnContainer = elementFactory(
     "div",
     "project-btn-container btn-container",
@@ -30,6 +33,7 @@ function projectComponent(project) {
   projectCard.setChildren(
     projcetTitle.domElement,
     projectImage.domElement,
+    progressDiv.domElement,
     projectBtnContainer.domElement,
   );
   projectBtnContainer.setChildren(

@@ -51,7 +51,6 @@ function editProjectsController() {
       for (let i = 0; i < projectArr.length; i++) {
         if (projectArr[i].getProjectName == projectName) {
           const selectedProject = projectArr[i];
-          console.log(selectedProject);
           selectedProject.setProjectName = inputField.value;
           projectUpdater();
           projectView();
