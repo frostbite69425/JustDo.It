@@ -7,6 +7,7 @@ function deleteProjectsController() {
   const deleteProjectButtonNodes = document.querySelectorAll(
     "button.delete-project-btn",
   );
+
   function deleteFunction(button) {
     const projectName = button.parentNode.parentNode.dataset.projectname;
 

@@ -1,10 +1,9 @@
 import updateListener from "../../utils/uiUtils/updateListener.js";
 import projectView from "../../services/uiServices/projectView.service.js";
-import Project from "../../utils/appUtils/ProjectClass.js";
 import projectInitialiser from "../appControllers/projectInitialiser.controller.js";
 
 function addProjectsController() {
-  const modal = document.querySelector(".modal");
+  const modal = document.querySelector(".new-project-modal");
   const addProjectBtn = document.querySelector(".add-new-project-btn");
   const inputField = document.querySelector("input.project-name");
   const createProjectModalBtn = document.querySelector(
@@ -13,6 +12,7 @@ function addProjectsController() {
   const cancelProjectModalBtn = document.querySelector(
     ".new-project-cancel-modal-btn",
   );
+  const newProjectForm = document.querySelector(".new-project-form");
 
   updateListener(
     addProjectBtn,
@@ -31,8 +31,16 @@ function addProjectsController() {
   );
 
   function addFunction() {
-    const newProject = projectInitialiser(inputField.value);
-    projectView();
+    if (!inputField.checkValidity()) {
+      return newProjectForm.reportValidity();
+    } else if (inputField.value == "default" || inputField.value == "") {
+      modal.close();
+      newProjectForm.reset();
+      return;
+    } else {
+      const newProject = projectInitialiser(inputField.value);
+      projectView();
+    }
   }
 
   updateListener(createProjectModalBtn, addFunction);
