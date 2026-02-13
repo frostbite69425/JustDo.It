@@ -306,7 +306,7 @@ footer {
 }
 
 aside {
-  min-width: 100%;
+  min-width: fit-content;
   min-height: 100%;
   padding: 1rem 1rem;
   border-radius: 15px;
@@ -314,6 +314,13 @@ aside {
   flex-direction: column;
   gap: 3rem;
   background-color: var(--bg-light);
+  /* transform: scale(1);
+  transition: all ease-in-out 0.5s;
+  transition-behavior: allow-discrete;
+  @starting-style {
+    opacity: 0;
+    transform: scale(0);
+  } */
 }
 
 nav.todo-page-nav {
@@ -324,6 +331,58 @@ nav.todo-page-nav {
   min-width: 100%;
   align-items: center;
   background-color: var(--bg-light);
+}
+
+.sidebar-btn-hidden {
+  transform: scale(0);
+  opacity: 0;
+  display: none;
+}
+
+div.todo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: var(--text-muted);
+
+  > .title {
+    align-self: center;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  > label {
+    display: flex;
+    gap: 1rem;
+
+    > input {
+      border: none;
+      outline: none;
+    }
+  }
+
+  > button {
+    align-self: center;
+    font-size: clamp(0.7rem, 3dvw, 1.3rem);
+  }
+
+  div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .todo-btn-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+    > .edit-todo-btn {
+      grid-area: 1/1/1/-1;
+    }
+  }
+
+  .more-hidden {
+    display: none;
+  }
 }
 
 /* SPECIFIC CSS SELECTORS */
@@ -366,8 +425,10 @@ nav.todo-page-nav {
 
 section.todo-container {
   min-width: 100%;
-  padding: 0; /* resetting padding because I'm reusing classes*/
+  padding: 0; /* resetting padding because I'm reusing classes */
 }
+
+/* bug */
 
 .view-project-btn {
   grid-area: 1/1/2/-1;
@@ -393,9 +454,25 @@ div.new-project-modal-btn-container {
 
 body > div.content > .selected-project-layout-div {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  aside {
+    width: 100%;
+  }
   padding: 1.5rem;
+
+  /* transition: grid-template-columns 0.1s ease-in-out;
+  transition-behavior: allow-discrete;
+  transition-delay: 0.1s; */
 }
+
+body > div.content > .selected-project-layout-div:has(input:checked) {
+  grid-template-columns: 1fr 4fr;
+}
+/* 
+body > div.content > .grid-area-toggle {
+  grid-template-columns: 1fr 4fr;
+} */
 
 aside .sidebar-header h2 {
   display: flex;
@@ -457,6 +534,10 @@ label.hamburger-menu input {
   div.content > div.selected-project-layout-div {
     display: flex;
     flex-direction: column;
+
+    section {
+      width: 100%;
+    }
   }
 
   nav label.hamburger-menu::before {

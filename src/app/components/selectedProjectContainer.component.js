@@ -1,5 +1,5 @@
 import elementFactory from "../controllers/uiControllers/elementFactory.controller.js";
-import toDoComponent from "./toDo.component.js";
+import toDoVariablesParser from "../controllers/uiControllers/todoVariables.controller.js";
 
 function selectedProjectContainer(project) {
   const toDoContainer = elementFactory(
@@ -32,7 +32,7 @@ function selectedProjectContainer(project) {
 
   const totalToDos = project.getProjectToDos;
   for (const toDo of totalToDos) {
-    const newToDoCard = toDoComponent(toDo);
+    const newToDoCard = toDoVariablesParser(toDo);
     toDoCardHolder.setChildren(newToDoCard.domElement);
   }
 

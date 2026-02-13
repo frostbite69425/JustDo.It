@@ -1,6 +1,7 @@
 import selectedProjectContainer from "../../components/selectedProjectContainer.component.js";
 import elementFactory from "../../controllers/uiControllers/elementFactory.controller.js";
 import sideBar from "../../components/sideBar.component.js";
+import sidebarToggler from "../../controllers/uiControllers/navToggler.controller.js";
 
 function selectedProjectView(project) {
   const content = document.querySelector(".content");
@@ -16,6 +17,7 @@ function selectedProjectView(project) {
   const sidebar = sideBar();
   layoutDiv.setChildren(sidebar.domElement, selectedContainer.domElement);
   content.appendChild(layoutDiv.domElement);
+  sidebarToggler();
 }
 
 export default selectedProjectView;
