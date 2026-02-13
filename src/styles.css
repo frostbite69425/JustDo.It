@@ -117,15 +117,14 @@ h6 {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+  --bar-width: 15px;
+  --bar-height: 2px;
+  --hamburger-gap: 5px;
 }
 
 ::backdrop {
   background-color: var(--bg-dark);
   opacity: 0.85;
-}
-
-body {
-  font-family: "Google Sans";
 }
 
 body.light {
@@ -147,6 +146,7 @@ body.light {
 }
 
 body {
+  font-family: "Google Sans";
   display: flex;
   flex-direction: column;
   padding: 1rem 2rem;
@@ -305,6 +305,27 @@ footer {
   border: none;
 }
 
+aside {
+  min-width: 100%;
+  min-height: 100%;
+  padding: 1rem 1rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: var(--bg-light);
+}
+
+nav.todo-page-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  min-width: 100%;
+  align-items: center;
+  background-color: var(--bg-light);
+}
+
 /* SPECIFIC CSS SELECTORS */
 
 .project-image {
@@ -343,6 +364,11 @@ footer {
   border-radius: 100px;
 }
 
+section.todo-container {
+  min-width: 100%;
+  padding: 0; /* resetting padding because I'm reusing classes*/
+}
+
 .view-project-btn {
   grid-area: 1/1/2/-1;
   background-color: var(--success);
@@ -363,4 +389,92 @@ div.new-project-modal-btn-container {
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-template-rows: 1fr;
+}
+
+body > div.content > .selected-project-layout-div {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 1.5rem;
+}
+
+aside .sidebar-header h2 {
+  display: flex;
+  font-size: clamp(1.2rem, 3.5dvw, 2.3rem);
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  background-color: var(--bg);
+  padding: 1rem;
+  border-radius: 15px;
+  border-top: var(--highlight) 1px solid;
+  box-shadow: 0px 4px 2px var(--bg-dark);
+  cursor: pointer;
+}
+
+label.hamburger-menu::before,
+label.hamburger-menu::after,
+label.hamburger-menu input {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--text);
+  border-radius: 6000px;
+  transition: transform ease-in-out 0.3s;
+}
+
+label.hamburger-menu::before {
+  transform: rotate(30deg);
+  translate: 0.2rem 0rem;
+}
+
+label.hamburger-menu::after {
+  transform: rotate(-30deg);
+  translate: 0.2rem 0rem;
+}
+
+label.hamburger-menu input {
+  appearance: none;
+  display: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+  transform: rotate(-30deg);
+  translate: -0.2rem 0rem;
+}
+.hamburger-menu:has(input:checked)::after {
+  transform: rotate(30deg);
+  translate: -0.2rem 0rem;
+}
+
+@media (max-width: 770px) {
+  div.content > div.selected-project-layout-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav label.hamburger-menu::before {
+    transform: rotate(60deg);
+    translate: -0.4rem 0.4rem;
+  }
+
+  nav label.hamburger-menu::after {
+    transform: rotate(-60deg);
+    translate: 0.35rem -0.29rem;
+  }
+
+  nav .hamburger-menu:has(input:checked)::before {
+    transform: rotate(120deg);
+    translate: -0.35rem 0.4rem;
+  }
+  nav .hamburger-menu:has(input:checked)::after {
+    transform: rotate(-120deg);
+    translate: 0.35rem -0.29rem;
+  }
 }

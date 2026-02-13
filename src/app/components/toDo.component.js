@@ -13,11 +13,15 @@ function toDoComponent(todo) {
 
   const formattedDate = format(todo.todoDueDate, "dd / MMMM / yyyy");
 
+  const doneCheckLabel = elementFactory("label", "todo-done-state-label");
+  const doneCheck = elementFactory("input", "todo-done-state-toggler");
+  doneCheck.domElement.setAttribute("type", "checkbox");
+  doneCheckLabel.insertText("Task completed");
+
+  doneCheckLabel.setChildren(doneCheck.domElement);
+
   toDoDueDate.insertText(`Due date: ${formattedDate}`);
-  //   toDoViewMoreBtn.domElement.innerHtml(
-  //     `<svg viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="chevron-right"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>`,
-  //   );
-  toDoViewMoreBtn.insertText("View More.");
+  toDoViewMoreBtn.insertText("View More");
   const toDoDescription = elementFactory("div", "todo-desc more-hidden");
   toDoDescription.insertText(`Description: ${todo.todoDescription}`);
   const toDoNotes = elementFactory("div", "todo-notes more-hidden");
@@ -27,6 +31,7 @@ function toDoComponent(todo) {
     toDoTitle.domElement,
     toDoPriority.domElement,
     toDoDueDate.domElement,
+    doneCheckLabel.domElement,
     toDoViewMoreBtn.domElement,
     toDoDescription.domElement,
     toDoNotes.domElement,

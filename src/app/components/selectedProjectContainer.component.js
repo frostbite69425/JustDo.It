@@ -12,17 +12,16 @@ function selectedProjectContainer(project) {
   const title = elementFactory("h1", "todo-page-title title");
   title.insertText(project.getProjectName);
 
-  const displaySideBarBtn = elementFactory(
-    "button",
-    "display-sidebar-btn button",
-  );
-  displaySideBarBtn.insertText("sidebarBtn"); // replace with the svg path for the three bars thingy
+  const sideBarHamburger = elementFactory("label", "hamburger-menu");
+  const hamburgerCheckbox = elementFactory("input", "hamburger-checkbox");
+  hamburgerCheckbox.domElement.setAttribute("type", "checkbox");
+  sideBarHamburger.setChildren(hamburgerCheckbox.domElement);
 
   const addToDoBtn = elementFactory("button", "add-todo-btn button");
   addToDoBtn.insertText("Add ToDo."); // replace with the svg path for the plus sign
 
   topNav.setChildren(
-    displaySideBarBtn.domElement,
+    sideBarHamburger.domElement,
     title.domElement,
     addToDoBtn.domElement,
   );

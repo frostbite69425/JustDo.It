@@ -2,20 +2,22 @@ import elementFactory from "../controllers/uiControllers/elementFactory.controll
 import Project from "../utils/appUtils/ProjectClass.js";
 
 function sideBar() {
-  const newSideBar = elementFactory("aside", "sidebar more-hidden");
-  const sideBarHeader = elementFactory("div", "sidebar-header more-hidden");
-  const sideBarHideBtn = elementFactory(
-    "button",
-    "hide-sidebar-btn button more-hidden",
+  const newSideBar = elementFactory("aside", "sidebar sidebar-btn-hidden");
+  const sideBarHeader = elementFactory(
+    "div",
+    "sidebar-header sidebar-btn-hidden",
   );
-  sideBarHideBtn.insertText("Hide Sidebar");
-  const sideBarTitle = elementFactory("h2", "sidebar-title title more-hidden");
+
+  const sideBarTitle = elementFactory(
+    "h2",
+    "sidebar-title title sidebar-btn-hidden",
+  );
   sideBarTitle.insertText("Your projects");
-  sideBarHeader.setChildren(sideBarHideBtn.domElement, sideBarTitle.domElement);
+  sideBarHeader.setChildren(sideBarTitle.domElement);
 
   const sideBarBtnHolder = elementFactory(
     "nav",
-    "side-bar-btn-holder nav more-hidden",
+    "side-bar-link-holder nav sidebar-btn-hidden",
   );
   const totalProjects = Project.projectArray;
   for (const projects of totalProjects) {
