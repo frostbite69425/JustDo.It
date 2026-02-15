@@ -1,8 +1,8 @@
-import subTask from "./subTaskClass.js";
-
-const setSubTasks = (todo, title) => {
-  const newSubTask = new subTask(title);
-  todo.subTasks = newSubTask;
+const setSubTasks = (todo, titleArr) => {
+  for (const title of titleArr) {
+    todo.subTasks = title;
+    console.log(todo.subTasks);
+  }
 };
 
 const deleteSubTasks = (todo, Title) => {

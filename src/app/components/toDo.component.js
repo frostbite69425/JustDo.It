@@ -6,7 +6,7 @@ function toDoComponent(
   todoDueDate,
   todoDescription = null,
   todoNotes = null,
-  todoSubtasks,
+  todoSubtasks = null,
 ) {
   const toDoCard = elementFactory("div", "todo-card card");
   const toDoTitle = elementFactory("h2", "todo-title title");
@@ -46,28 +46,45 @@ function toDoComponent(
   const toDoViewMoreBtn = elementFactory("button", "todo-view-more-btn button");
   toDoViewMoreBtn.insertText("View More");
 
-  const toDoDescription = elementFactory(
-    "div",
-    "todo-desc more-hidden more-toggle",
-  );
-  const toDoDescTextDiv = elementFactory("div", "todo-desc-text-div");
-  const toDoDescVariableDiv = elementFactory("div", "todo-desc-var-div");
-  toDoDescTextDiv.insertText("Description: ");
-  toDoDescVariableDiv.insertText(todoDescription);
-  toDoDescription.setChildren(
-    toDoDescTextDiv.domElement,
-    toDoDescVariableDiv.domElement,
+  toDoCard.setChildren(
+    toDoTitle.domElement,
+    toDoPriority.domElement,
+    toDoDueDate.domElement,
+    doneCheckLabel.domElement,
+    toDoViewMoreBtn.domElement,
   );
 
-  const toDoNotes = elementFactory("div", "todo-notes more-hidden more-toggle");
-  const toDoNotesTextDiv = elementFactory("div", "todo-notes-text-div");
-  const toDoNotesVariableDiv = elementFactory("div", "todo-notes-var-div");
-  toDoNotesTextDiv.insertText("Notes: ");
-  toDoNotesVariableDiv.insertText(todoNotes);
-  toDoNotes.setChildren(
-    toDoNotesTextDiv.domElement,
-    toDoNotesVariableDiv.domElement,
-  );
+  if (todoDescription !== null) {
+    const toDoDescription = elementFactory(
+      "div",
+      "todo-desc more-hidden more-toggle",
+    );
+    const toDoDescTextDiv = elementFactory("div", "todo-desc-text-div");
+    const toDoDescVariableDiv = elementFactory("div", "todo-desc-var-div");
+    toDoDescTextDiv.insertText("Description: ");
+    toDoDescVariableDiv.insertText(todoDescription);
+    toDoDescription.setChildren(
+      toDoDescTextDiv.domElement,
+      toDoDescVariableDiv.domElement,
+    );
+    toDoCard.setChildren(toDoDescription.domElement);
+  }
+
+  if (todoNotes !== null) {
+    const toDoNotes = elementFactory(
+      "div",
+      "todo-notes more-hidden more-toggle",
+    );
+    const toDoNotesTextDiv = elementFactory("div", "todo-notes-text-div");
+    const toDoNotesVariableDiv = elementFactory("div", "todo-notes-var-div");
+    toDoNotesTextDiv.insertText("Notes: ");
+    toDoNotesVariableDiv.insertText(todoNotes);
+    toDoNotes.setChildren(
+      toDoNotesTextDiv.domElement,
+      toDoNotesVariableDiv.domElement,
+    );
+    toDoCard.setChildren(toDoNotes.domElement);
+  }
 
   const todoBtnContainer = elementFactory(
     "div",
@@ -86,23 +103,12 @@ function toDoComponent(
     deleteTodoButton.domElement,
   );
 
-  toDoCard.setChildren(
-    toDoTitle.domElement,
-    toDoPriority.domElement,
-    toDoDueDate.domElement,
-    doneCheckLabel.domElement,
-    toDoViewMoreBtn.domElement,
-    toDoDescription.domElement,
-    toDoNotes.domElement,
-    todoBtnContainer.domElement,
-  );
-
-  if (todoSubtasks.length > 0) {
-    const toDoSubtasks = elementFactory(
+  if (todoSubtasks.length > 0 && todoSubtasks !== null) {
+    const toDoSubtasksList = elementFactory(
       "ul",
       "todo-subTasks ul more-hidden more-toggle",
     );
-    toDoSubtasks.insertText(`${todo.subTasks}`);
+    toDoSubtasksList.insertText(`Sub Tasks:`);
     for (const task of todoSubtasks) {
       const subTaskHolder = elementFactory(
         "div",
@@ -123,8 +129,10 @@ function toDoComponent(
         newSubtask.domElement,
         subTaskDelBtn.domElement,
       );
+
+      toDoSubtasksList.setChildren(subTaskHolder.domElement);
     }
-    toDoCard.setChildren(toDoSubtasks.domElement);
+    toDoCard.setChildren(toDoSubtasksList.domElement);
   }
 
   const toDoViewLessBtn = elementFactory(
@@ -133,7 +141,9 @@ function toDoComponent(
   );
   toDoViewLessBtn.insertText("View Less");
 
-  toDoCard.setChildren(toDoViewLessBtn.domElement);
+  toDoCard.setChildren(todoBtnContainer.domElement, toDoViewLessBtn.domElement);
+
+  toDoCard.domElement.classList.add(todoPriority);
 
   return toDoCard;
 }

@@ -1,5 +1,6 @@
-import { add, isFuture, isDate } from "date-fns";
+import { isFuture, isDate } from "date-fns";
 import log from "./logMessage.js";
+import subTaskMaker from "./subTaskClass.js";
 
 class ToDo {
   subTaskArr = [];
@@ -71,8 +72,9 @@ class ToDo {
     return this.subTaskArr;
   }
 
-  set subTasks(subtask) {
-    this.subTaskArr.push(subtask);
+  set subTasks(subtaskTitle) {
+    const newSubTask = new subTaskMaker(subtaskTitle);
+    this.subTaskArr.push(newSubTask);
   }
 
   delSubTask(subtask) {

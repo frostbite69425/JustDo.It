@@ -12,7 +12,7 @@ export default class Subtask {
     this.title = text;
   }
 
-  get subTaskDoneState() {
+  get subTaskState() {
     return this.subTaskDoneState;
   }
 

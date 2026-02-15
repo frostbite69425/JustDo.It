@@ -118,8 +118,28 @@ h6 {
     "Helvetica Neue",
     sans-serif;
   --bar-width: 15px;
-  --bar-height: 2px;
-  --hamburger-gap: 5px;
+  --bar-height: 3px;
+  --hamburger-gap: 4px;
+  --prio-low: linear-gradient(
+    to right,
+    oklch(76.419% 0.22514 140.992),
+    oklch(36.651% 0.10841 141.762)
+  );
+  --prio-medium: linear-gradient(
+    to right,
+    oklch(77.119% 0.06879 259.641),
+    oklch(27.008% 0.17384 265.168)
+  );
+  --prio-high: linear-gradient(
+    to right,
+    oklch(57.065% 0.14234 43.387),
+    oklch(35.953% 0.12738 32.278)
+  );
+  --prio-emergency: linear-gradient(
+    to right,
+    oklch(63.527% 0.25078 30.533),
+    oklch(47.102% 0.16922 30.967)
+  );
 }
 
 ::backdrop {
@@ -314,13 +334,6 @@ aside {
   flex-direction: column;
   gap: 3rem;
   background-color: var(--bg-light);
-  /* transform: scale(1);
-  transition: all ease-in-out 0.5s;
-  transition-behavior: allow-discrete;
-  @starting-style {
-    opacity: 0;
-    transform: scale(0);
-  } */
 }
 
 nav.todo-page-nav {
@@ -344,7 +357,6 @@ div.todo-card {
   flex-direction: column;
   align-items: start;
   color: var(--text-muted);
-
   > .title {
     align-self: center;
     color: var(--text);
@@ -414,6 +426,10 @@ div.todo-card {
     justify-content: center;
   }
 }
+/* 
+.todo-container div.projects-container {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+} */
 
 .add-new-project-btn {
   place-self: center;
@@ -456,6 +472,7 @@ body > div.content > .selected-project-layout-div {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+
   aside {
     width: 100%;
   }
@@ -466,7 +483,9 @@ body > div.content > .selected-project-layout-div {
   transition-delay: 0.1s; */
 }
 
-body > div.content > .selected-project-layout-div:has(input:checked) {
+body
+  > div.content
+  > .selected-project-layout-div:has(input.hamburger-checkbox:checked) {
   grid-template-columns: 1fr 4fr;
 }
 /* 
@@ -479,6 +498,42 @@ aside .sidebar-header h2 {
   font-size: clamp(1.2rem, 3.5dvw, 2.3rem);
 }
 
+.todo-subTasks {
+  padding: 0;
+
+  > .todo-subtask-holder {
+    padding: 0.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    > button.subtask-del-btn {
+      padding: 0.2rem max(0.4rem, 1.5dvw);
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.edit-todo-btn {
+  background-color: var(--success);
+}
+
+.move-todo-btn {
+  background-color: var(--info);
+}
+
+.delete-todo-btn {
+  background-color: var(--danger);
+}
+
+.todo-desc-var-div,
+.todo-notes-var-div {
+  text-align: justify;
+  /* word-break: break-word; */
+  hyphens: auto;
+}
+
 .hamburger-menu {
   display: flex;
   flex-direction: column;
@@ -489,6 +544,7 @@ aside .sidebar-header h2 {
   border-top: var(--highlight) 1px solid;
   box-shadow: 0px 4px 2px var(--bg-dark);
   cursor: pointer;
+  transform: scale(0.8);
 }
 
 label.hamburger-menu::before,
@@ -530,7 +586,44 @@ label.hamburger-menu input {
   translate: -0.2rem 0rem;
 }
 
-@media (max-width: 770px) {
+div.todo-card {
+  .todo-priority-var-div {
+    padding: 0rem 2rem;
+    text-align: center;
+    border-radius: 5px;
+    color: var(--text);
+  }
+}
+
+div.todo-card.low {
+  .todo-priority-var-div {
+    background: var(--prio-low);
+  }
+}
+
+div.todo-card.medium {
+  .todo-priority-var-div {
+    background: var(--prio-medium);
+  }
+}
+
+div.todo-card.high {
+  .todo-priority-var-div {
+    background: var(--prio-high);
+  }
+}
+
+div.todo-card.emergency {
+  .todo-priority-var-div {
+    background: var(--prio-emergency);
+  }
+}
+
+div.edit-project-modal-btn-container {
+  grid-template-rows: 1fr;
+}
+
+@media (max-width: 950px) {
   div.content > div.selected-project-layout-div {
     display: flex;
     flex-direction: column;

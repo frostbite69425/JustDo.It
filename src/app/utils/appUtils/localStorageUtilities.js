@@ -1,5 +1,6 @@
 import Project from "./ProjectClass.js";
 import ToDo from "./toDoClass.js";
+import Subtask from "./subTaskClass.js";
 
 function saveProjectToLocalStorage(project) {
   const stringifiedProject = JSON.stringify(project);
@@ -15,6 +16,11 @@ function getProjectFromLocalStorage(project) {
 
   for (const item of todosInProject) {
     Object.setPrototypeOf(item, ToDo.prototype);
+    if (item.subTasks.length > 0) {
+      for (const task of item.subTasks) {
+        Object.setPrototypeOf(task, Subtask.prototype);
+      }
+    }
   }
 
   return parsedProject;
