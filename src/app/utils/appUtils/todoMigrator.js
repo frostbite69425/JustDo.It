@@ -1,7 +1,16 @@
-const todoMigrator = (formProject, toProject, ...todos) => {
+import Project from "./ProjectClass.js";
+
+const todoMigrator = (fromProject, toProjectTitle, ...todos) => {
   for (const todo of todos) {
-    formProject.removeToDo(todo);
-    toProject.addToDo(todo);
+    fromProject.removeToDo(todo);
+    const projectArr = Project.getProjectArray();
+    for (let i = 0; i < projectArr.length; i++) {
+      if (projectArr[i].getProjectName == toProjectTitle) {
+        const toProject = projectArr[i];
+        toProject.addToDo(todo);
+        break;
+      }
+    }
   }
 };
 

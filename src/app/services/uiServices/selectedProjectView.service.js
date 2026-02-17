@@ -9,6 +9,8 @@ import makeEditToDoModal from "../../components/editToDoModal.component.js";
 import editTodoController from "../../controllers/uiControllers/editToDos.controller.js";
 import doneToggler from "../../controllers/uiControllers/doneStateToggler.controller.js";
 import deleteTodosController from "../../controllers/uiControllers/deleteToDos.controller.js";
+import migrateTodoModal from "../../components/moveTodoModal.component.js";
+import todoMigratorController from "../../controllers/uiControllers/moveTodos.controller.js";
 
 function selectedProjectView(project) {
   const content = document.querySelector(".content");
@@ -25,12 +27,14 @@ function selectedProjectView(project) {
   const sidebar = sideBar();
   const addNewTodoModal = makeNewToDoModal();
   const editToDoModal = makeEditToDoModal();
+  const migrateToDoModal = migrateTodoModal(project);
 
   layoutDiv.setChildren(sidebar.domElement, selectedContainer.domElement);
   content.append(
     layoutDiv.domElement,
     addNewTodoModal.domElement,
     editToDoModal.domElement,
+    migrateToDoModal.domElement,
   );
 
   sidebarToggler();
@@ -39,6 +43,7 @@ function selectedProjectView(project) {
   editTodoController(project);
   doneToggler(project);
   deleteTodosController(project);
+  todoMigratorController(project);
 }
 
 export default selectedProjectView;
