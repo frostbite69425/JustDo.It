@@ -8,6 +8,7 @@ import addTodosController from "../../controllers/uiControllers/addToDos.control
 import makeEditToDoModal from "../../components/editToDoModal.component.js";
 import editTodoController from "../../controllers/uiControllers/editToDos.controller.js";
 import doneToggler from "../../controllers/uiControllers/doneStateToggler.controller.js";
+import deleteTodosController from "../../controllers/uiControllers/deleteToDos.controller.js";
 
 function selectedProjectView(project) {
   const content = document.querySelector(".content");
@@ -37,6 +38,7 @@ function selectedProjectView(project) {
   addTodosController(project);
   editTodoController(project);
   doneToggler(project);
+  deleteTodosController(project);
 }
 
 export default selectedProjectView;

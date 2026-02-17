@@ -14,8 +14,6 @@ function doneToggler(project) {
     for (let i = 0; i < todoArr.length; i++) {
       if (todoArr[i].todoTitle == datasetTodoTitle) {
         todoArr[i].toggleTodoDoneState();
-        console.log(btn);
-        console.log(btn.checked);
         parentDiv.classList.toggle("completed-todo");
       }
       projectUpdater();
