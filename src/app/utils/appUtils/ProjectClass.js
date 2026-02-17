@@ -59,9 +59,11 @@ export default class Project {
     if (subTaskString !== null && subTaskString.indexOf(",") !== -1) {
       const subTaskArr = subTaskString.trim().split(",");
       setSubTasks(newToDo, subTaskArr);
+    } else if (subTaskString !== null && subTaskString.indexOf(",") == -1) {
+      const subTaskArr = [subTaskString];
+      setSubTasks(newToDo, subTaskArr);
     }
     this.addToDo(newToDo);
-    console.log(newToDo);
   }
 
   get getProjectToDos() {

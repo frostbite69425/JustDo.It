@@ -623,6 +623,13 @@ div.edit-project-modal-btn-container {
   grid-template-rows: 1fr;
 }
 
+div.todo-card.completed-todo {
+  background-color: green;
+  > .title {
+    text-decoration: line-through;
+  }
+}
+
 @media (max-width: 950px) {
   div.content > div.selected-project-layout-div {
     display: flex;

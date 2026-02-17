@@ -8,6 +8,7 @@ function toDoVariablesParser(todo) {
   const todoDescription = todo.todoDescription;
   const todoNotes = todo.todoNotes;
   const todoSubtasks = todo.subTasks;
+  const todoDoneState = todo.todoDoneState;
   const todoComponent = new toDoComponent(
     todoTitle,
     todoPriority,
@@ -15,6 +16,7 @@ function toDoVariablesParser(todo) {
     todoDescription,
     todoNotes,
     todoSubtasks,
+    todoDoneState,
   );
 
   return todoComponent;

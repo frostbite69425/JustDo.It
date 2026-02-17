@@ -5,6 +5,9 @@ import sidebarToggler from "../../controllers/uiControllers/navToggler.controlle
 import toggleViewMore from "../../controllers/uiControllers/viewMoreToggler.controller.js";
 import makeNewToDoModal from "../../components/newToDoModal.component.js";
 import addTodosController from "../../controllers/uiControllers/addToDos.controller.js";
+import makeEditToDoModal from "../../components/editToDoModal.component.js";
+import editTodoController from "../../controllers/uiControllers/editToDos.controller.js";
+import doneToggler from "../../controllers/uiControllers/doneStateToggler.controller.js";
 
 function selectedProjectView(project) {
   const content = document.querySelector(".content");
@@ -20,13 +23,20 @@ function selectedProjectView(project) {
   const selectedContainer = selectedProjectContainer(project);
   const sidebar = sideBar();
   const addNewTodoModal = makeNewToDoModal();
+  const editToDoModal = makeEditToDoModal();
 
   layoutDiv.setChildren(sidebar.domElement, selectedContainer.domElement);
-  content.append(layoutDiv.domElement, addNewTodoModal.domElement);
+  content.append(
+    layoutDiv.domElement,
+    addNewTodoModal.domElement,
+    editToDoModal.domElement,
+  );
 
   sidebarToggler();
   toggleViewMore();
-  addTodosController();
+  addTodosController(project);
+  editTodoController(project);
+  doneToggler(project);
 }
 
 export default selectedProjectView;

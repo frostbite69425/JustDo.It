@@ -1,7 +1,8 @@
 const setSubTasks = (todo, titleArr) => {
   for (const title of titleArr) {
-    todo.subTasks = title;
-    console.log(todo.subTasks);
+    if (title !== "") {
+      todo.subTasks = title;
+    }
   }
 };
 

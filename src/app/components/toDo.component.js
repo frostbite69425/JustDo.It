@@ -7,6 +7,7 @@ function toDoComponent(
   todoDescription = null,
   todoNotes = null,
   todoSubtasks = null,
+  todoDoneState,
 ) {
   const toDoCard = elementFactory("div", "todo-card card");
   const toDoTitle = elementFactory("h2", "todo-title title");
@@ -40,6 +41,7 @@ function toDoComponent(
   doneCheckText.insertText("Task completed");
   const doneCheck = elementFactory("input", "todo-done-state-toggler");
   doneCheck.domElement.setAttribute("type", "checkbox");
+  doneCheck.domElement.checked = todoDoneState;
 
   doneCheckLabel.setChildren(doneCheckText.domElement, doneCheck.domElement);
 
@@ -144,6 +146,12 @@ function toDoComponent(
   toDoCard.setChildren(todoBtnContainer.domElement, toDoViewLessBtn.domElement);
 
   toDoCard.domElement.classList.add(todoPriority);
+
+  toDoCard.domElement.setAttribute("data-todotitle", todoTitle);
+
+  if (todoDoneState) {
+    toDoCard.domElement.classList.add("completed-todo");
+  }
 
   return toDoCard;
 }

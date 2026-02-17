@@ -5,7 +5,6 @@ import projectUpdater from "../appControllers/localStorageUpdater.controller.js"
 
 function editProjectsController() {
   const editProjectBtnNodes = document.querySelectorAll(".edit-project-btn");
-
   const modal = document.querySelector(".edit-project-modal");
   const inputField = document.querySelector("#edited-project-name");
   const editProjectModalBtn = document.querySelector(
@@ -40,7 +39,7 @@ function editProjectsController() {
   function editFunction() {
     if (!inputField.checkValidity()) {
       return editProjectForm.reportValidity();
-    } else if (inputField.value == "default" || inputField.value == "") {
+    } else if (inputField.value == "") {
       modal.close();
       editProjectForm.reset();
       return;

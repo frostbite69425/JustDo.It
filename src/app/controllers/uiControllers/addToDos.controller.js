@@ -4,7 +4,7 @@ import todoInitialiser from "../appControllers/todoInitialiser.controller.js";
 import Project from "../../utils/appUtils/ProjectClass.js";
 import { toDate, isFuture, startOfToday } from "date-fns";
 
-function addTodosController() {
+function addTodosController(projectInput) {
   const modal = document.querySelector(".new-todo-modal");
   const newToDoForm = document.querySelector(".new-todo-form");
   const addToDoBtn = document.querySelector(".add-todo-btn");
@@ -52,7 +52,6 @@ function addTodosController() {
     if (!titleInput.checkValidity() || !dateInput.checkValidity()) {
       return newToDoForm.reportValidity();
     } else if (
-      titleInput.value == "default" ||
       titleInput.value == "" ||
       dateInput.value == "default" ||
       dateInput.value == ""
@@ -61,25 +60,17 @@ function addTodosController() {
       newProjectForm.reset();
       return;
     } else {
-      const projectName =
-        addToDoBtn.parentNode.parentNode.parentNode.dataset.projectname;
-      const projectArr = Project.getProjectArray();
-      for (const project of projectArr) {
-        if (projectName == project.getProjectName) {
-          const requiredProject = project;
-          const newToDo = todoInitialiser(
-            requiredProject,
-            titleInput.value,
-            prioInput.value,
-            toDate(dateInput.value),
-            descInput.value,
-            notesInput.value,
-            subTasksInput.value,
-          );
-          selectedProjectView(requiredProject);
-          break;
-        }
-      }
+      const requiredProject = projectInput;
+      const newToDo = todoInitialiser(
+        requiredProject,
+        titleInput.value,
+        prioInput.value,
+        toDate(dateInput.value),
+        descInput.value,
+        notesInput.value,
+        subTasksInput.value,
+      );
+      selectedProjectView(requiredProject);
     }
   }
 
