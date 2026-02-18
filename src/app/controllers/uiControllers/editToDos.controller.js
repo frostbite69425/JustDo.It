@@ -35,7 +35,6 @@ function editTodoController(project) {
       "noupdate",
     );
   });
-
   updateListener(
     editCancelToDoModalBtn,
     () => {
@@ -61,9 +60,8 @@ function editTodoController(project) {
       const todoArr = selectedProject.getProjectToDos;
       const datasetTodoTitle =
         selectedBtn.parentNode.parentNode.dataset.todotitle;
-
       for (let i = 0; i < todoArr.length; i++) {
-        if (todoArr[i].todoTitle == datasetTodoTitle) {
+        if (todoArr[i].todoUid == datasetTodoTitle) {
           const selectedToDo = todoArr[i];
           const inputPropertyValueObject = {
             todoTitle: titleInput.value,

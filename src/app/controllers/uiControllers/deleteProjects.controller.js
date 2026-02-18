@@ -14,7 +14,7 @@ function deleteProjectsController() {
     const projectArr = Project.projectArray;
 
     for (let i = 0; i < projectArr.length; i++) {
-      if (projectArr[i].getProjectName == projectName) {
+      if (projectArr[i].getProjectUid == projectName) {
         const selectedProject = projectArr[i];
         Project.deleteProjectPermanently(selectedProject);
         projectUpdater();

@@ -8,6 +8,7 @@ function toDoComponent(
   todoNotes = null,
   todoSubtasks = null,
   todoDoneState,
+  todoUid,
 ) {
   const toDoCard = elementFactory("div", "todo-card card");
   const toDoTitle = elementFactory("h2", "todo-title title");
@@ -132,6 +133,11 @@ function toDoComponent(
         subTaskDelBtn.domElement,
       );
 
+      subTaskHolder.domElement.setAttribute(
+        "data-subtasktitle",
+        task.subTaskUid,
+      );
+
       toDoSubtasksList.setChildren(subTaskHolder.domElement);
     }
     toDoCard.setChildren(toDoSubtasksList.domElement);
@@ -147,7 +153,7 @@ function toDoComponent(
 
   toDoCard.domElement.classList.add(todoPriority);
 
-  toDoCard.domElement.setAttribute("data-todotitle", todoTitle);
+  toDoCard.domElement.setAttribute("data-todotitle", todoUid);
 
   if (todoDoneState) {
     toDoCard.domElement.classList.add("completed-todo");

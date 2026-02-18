@@ -2,6 +2,11 @@ export default class Subtask {
   constructor(title) {
     this.title = title;
     this.subTaskDoneState = false;
+    this.uuid = crypto.randomUUID();
+  }
+
+  get subTaskUid() {
+    return this.uuid;
   }
 
   get subTaskTitle() {

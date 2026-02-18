@@ -12,11 +12,11 @@ function doneToggler(project) {
     const parentDiv = btn.parentNode.parentNode;
 
     for (let i = 0; i < todoArr.length; i++) {
-      if (todoArr[i].todoTitle == datasetTodoTitle) {
+      if (todoArr[i].todoUid == datasetTodoTitle) {
         todoArr[i].toggleTodoDoneState();
         parentDiv.classList.toggle("completed-todo");
+        projectUpdater();
       }
-      projectUpdater();
     }
   }
 

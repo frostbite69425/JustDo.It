@@ -20,7 +20,6 @@ function todoMigratorController(project) {
   );
 
   const projectArray = Project.getProjectArray();
-  console.log(projectArray);
 
   let selectedBtn;
 
@@ -56,7 +55,7 @@ function todoMigratorController(project) {
     const selectedTargetProject = projectSelect.value;
 
     for (let i = 0; i < todoArr.length; i++) {
-      if (todoArr[i].todoTitle == datasetTodoTitle) {
+      if (todoArr[i].todoUid == datasetTodoTitle) {
         const selectedToDo = todoArr[i];
         todoMigrator(project, selectedTargetProject, selectedToDo);
         modal.close();

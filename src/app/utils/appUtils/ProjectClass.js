@@ -17,7 +17,12 @@ export default class Project {
   constructor(name) {
     this.projectName = name;
     this.projectToDos = [];
+    this.uuid = crypto.randomUUID();
     Project.projectArray.push(this);
+  }
+
+  get getProjectUid() {
+    return this.uuid;
   }
 
   get getProjectName() {

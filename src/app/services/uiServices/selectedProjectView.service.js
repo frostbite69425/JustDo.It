@@ -11,6 +11,7 @@ import doneToggler from "../../controllers/uiControllers/doneStateToggler.contro
 import deleteTodosController from "../../controllers/uiControllers/deleteToDos.controller.js";
 import migrateTodoModal from "../../components/moveTodoModal.component.js";
 import todoMigratorController from "../../controllers/uiControllers/moveTodos.controller.js";
+import deleteSubtasksController from "../../controllers/uiControllers/deleteSubtasks.controller.js";
 
 function selectedProjectView(project) {
   const content = document.querySelector(".content");
@@ -21,7 +22,7 @@ function selectedProjectView(project) {
     "div",
     "selected-project-layout-div display-container",
   );
-  layoutDiv.domElement.setAttribute("data-projectname", project.getProjectName);
+  layoutDiv.domElement.setAttribute("data-projectname", project.getProjectUid);
 
   const selectedContainer = selectedProjectContainer(project);
   const sidebar = sideBar();
@@ -44,6 +45,7 @@ function selectedProjectView(project) {
   doneToggler(project);
   deleteTodosController(project);
   todoMigratorController(project);
+  deleteSubtasksController(project);
 }
 
 export default selectedProjectView;

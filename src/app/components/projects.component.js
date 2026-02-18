@@ -44,7 +44,7 @@ function projectComponent(project) {
 
   projectCard.domElement.setAttribute(
     "data-projectname",
-    project.getProjectName,
+    project.getProjectUid,
   );
 
   return projectCard;

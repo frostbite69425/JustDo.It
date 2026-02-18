@@ -2,6 +2,7 @@ import updateListener from "../../utils/uiUtils/updateListener.js";
 import selectedProjectView from "../../services/uiServices/selectedProjectView.service.js";
 import todoInitialiser from "../appControllers/todoInitialiser.controller.js";
 import Project from "../../utils/appUtils/ProjectClass.js";
+import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
 import { toDate, isFuture, startOfToday } from "date-fns";
 
 function addTodosController(projectInput) {
@@ -70,6 +71,7 @@ function addTodosController(projectInput) {
         notesInput.value,
         subTasksInput.value,
       );
+      projectUpdater();
       selectedProjectView(requiredProject);
     }
   }

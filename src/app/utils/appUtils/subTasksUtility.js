@@ -6,10 +6,10 @@ const setSubTasks = (todo, titleArr) => {
   }
 };
 
-const deleteSubTasks = (todo, Title) => {
+const deleteSubTasks = (todo, uid) => {
   const subTaskArray = todo.subTasks;
   for (const task of subTaskArray) {
-    if (task.subTaskTitle == Title) {
+    if (task.subTaskUid == uid) {
       todo.delSubTask(task);
     }
   }

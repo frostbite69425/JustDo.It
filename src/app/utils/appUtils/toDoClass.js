@@ -14,6 +14,11 @@ class ToDo {
       this.dueDate = date;
     }
     this.doneState = false;
+    this.uuid = crypto.randomUUID();
+  }
+
+  get todoUid() {
+    return this.uuid;
   }
 
   get todoDoneState() {

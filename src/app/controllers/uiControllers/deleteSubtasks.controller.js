@@ -1,18 +1,19 @@
 import updateListener from "../../utils/uiUtils/updateListener.js";
 import selectedProjectView from "../../services/uiServices/selectedProjectView.service.js";
 import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
+import { deleteSubTasks } from "../../utils/appUtils/subTasksUtility.js";
 
-function deleteTodosController(project) {
-  const deleteTodosBtnNodes = document.querySelectorAll(
-    "button.delete-todo-btn",
-  );
+function deleteSubtasksController(project) {
+  const deleteSubtaskBtnNodes = document.querySelectorAll(".subtask-del-btn");
 
   function deleteFunction(btn) {
     const todoArr = project.getProjectToDos;
-    const datasetTodoTitle = btn.parentNode.parentNode.dataset.todotitle;
+    const datasetTodoTitle =
+      btn.parentNode.parentNode.parentNode.dataset.todotitle;
+    const subTaskTitle = btn.parentNode.dataset.subtasktitle;
     for (let i = 0; i < todoArr.length; i++) {
       if (todoArr[i].todoUid == datasetTodoTitle) {
-        project.removeToDo(todoArr[i]);
+        deleteSubTasks(todoArr[i], subTaskTitle);
         projectUpdater();
         selectedProjectView(project);
         break;
@@ -20,9 +21,9 @@ function deleteTodosController(project) {
     }
   }
 
-  deleteTodosBtnNodes.forEach((btn) => {
+  deleteSubtaskBtnNodes.forEach((btn) => {
     updateListener(btn, deleteFunction, btn);
   });
 }
 
-export default deleteTodosController;
+export default deleteSubtasksController;

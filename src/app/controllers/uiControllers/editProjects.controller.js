@@ -48,7 +48,7 @@ function editProjectsController() {
       const projectArr = Project.projectArray;
 
       for (let i = 0; i < projectArr.length; i++) {
-        if (projectArr[i].getProjectName == projectName) {
+        if (projectArr[i].getProjectUid == projectName) {
           const selectedProject = projectArr[i];
           selectedProject.setProjectName = inputField.value;
           projectUpdater();
