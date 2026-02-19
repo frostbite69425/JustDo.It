@@ -445,6 +445,7 @@ div.todo-card {
 .display-container {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 3rem;
   color: var(--text);
   align-items: center;
@@ -734,7 +735,7 @@ form.edit-todo-form {
     border: none;
     display: grid;
     place-items: center;
-    background-color: var(--bg-light);
+    background-color: black;
   }
 }
 
