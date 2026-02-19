@@ -12,6 +12,7 @@ import deleteTodosController from "../../controllers/uiControllers/deleteToDos.c
 import migrateTodoModal from "../../components/moveTodoModal.component.js";
 import todoMigratorController from "../../controllers/uiControllers/moveTodos.controller.js";
 import deleteSubtasksController from "../../controllers/uiControllers/deleteSubtasks.controller.js";
+import sidebarRedirectController from "../../controllers/uiControllers/sideBarRedirect.controller.js";
 
 function selectedProjectView(project) {
   const content = document.querySelector(".content");
@@ -46,6 +47,7 @@ function selectedProjectView(project) {
   deleteTodosController(project);
   todoMigratorController(project);
   deleteSubtasksController(project);
+  sidebarRedirectController();
 }
 
 export default selectedProjectView;

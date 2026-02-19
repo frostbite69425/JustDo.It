@@ -84,23 +84,21 @@ h6 {
   isolation: isolate;
 }
 
+::view-transition-new(root) {
+  animation: circle-in 1300ms;
+}
+
+@keyframes circle-in {
+  from {
+    clip-path: circle(0% at 50% 0%);
+  }
+
+  to {
+    clip-path: circle(120% at 50% 0%);
+  }
+}
+
 :root {
-  --bg-dark: oklch(0.1 0 274);
-  --bg: oklch(0.15 0 274);
-  --bg-light: oklch(0.2 0 274);
-  --text: oklch(0.96 0 274);
-  --text-muted: oklch(0.76 0 274);
-  --highlight: oklch(89.857% 0.00985 16.771);
-  --border: oklch(0.4 0 274);
-  --border-muted: oklch(0.3 0 274);
-  --primary: oklch(0.76 0.1 274);
-  --secondary: oklch(0.76 0.1 94);
-  --danger: oklch(63.932% 0.18474 32.073);
-  --warning: oklch(92.826% 0.18202 102.607);
-  --success: oklch(66.475% 0.15351 153.883);
-  --info: oklch(67.881% 0.13757 260.478);
-  --hover-highlight: oklch(0% 0 0);
-  --blue-border: oklch(63.042% 0.16069 251.222);
   font-size: 10px;
   font-family:
     Arial,
@@ -120,6 +118,23 @@ h6 {
   --bar-width: 15px;
   --bar-height: 3px;
   --hamburger-gap: 4px;
+
+  --bg-dark: oklch(0.1 0 274);
+  --bg: oklch(0.15 0 274);
+  --bg-light: oklch(0.2 0 274);
+  --text: oklch(0.96 0 274);
+  --text-muted: oklch(0.76 0 274);
+  --highlight: oklch(89.857% 0.00985 16.771);
+  --border: oklch(0.4 0 274);
+  --border-muted: oklch(0.3 0 274);
+  --primary: oklch(0.76 0.1 274);
+  --secondary: oklch(0.76 0.1 94);
+  --danger: oklch(63.932% 0.18474 32.073);
+  --warning: oklch(92.826% 0.18202 102.607);
+  --success: oklch(66.475% 0.15351 153.883);
+  --info: oklch(67.881% 0.13757 260.478);
+  --hover-highlight: oklch(0% 0 0);
+  --blue-border: oklch(63.042% 0.16069 251.222);
   --prio-low: linear-gradient(
     to right,
     oklch(76.419% 0.22514 140.992),
@@ -140,6 +155,7 @@ h6 {
     oklch(63.527% 0.25078 30.533),
     oklch(47.102% 0.16922 30.967)
   );
+  --completed-todo: oklch(27.01% 0.05253 157.372);
 }
 
 ::backdrop {
@@ -148,21 +164,43 @@ h6 {
 }
 
 body.light {
-  --bg-dark: oklch(0.92 0.065 207);
-  --bg: oklch(0.96 0.065 207);
-  --bg-light: oklch(1 0.065 207);
+  --bg-dark: oklch(85.424% 0.04949 206.033);
+  --bg: oklch(94.174% 0.06021 196.275);
+  --bg-light: oklch(97.587% 0.03506 196.767);
   --text: oklch(0.15 0.13 207);
   --text-muted: oklch(0.4 0.13 207);
-  --highlight: oklch(1 0.13 207);
+  --highlight: oklch(100% 0.00011 271.152);
   --border: oklch(0.6 0.13 207);
   --border-muted: oklch(0.7 0.13 207);
   --primary: oklch(0.4 0.13 207);
   --secondary: oklch(0.4 0.13 27);
-  --danger: oklch(0.5 0.13 30);
-  --warning: oklch(0.5 0.13 100);
-  --success: oklch(0.5 0.13 160);
-  --info: oklch(0.5 0.13 260);
-  --hover-highlight: oklch(100% 0.00011 271.152);
+  --danger: oklch(64.424% 0.23709 30.93);
+  --warning: oklch(72.969% 0.17935 55.303);
+  --success: oklch(81.811% 0.18159 159.266);
+  --info: oklch(65.548% 0.17517 260.577);
+  --hover-highlight: oklch(0% 0 0);
+  --blue-border: oklch(62.212% 0.19061 253.711);
+  --prio-low: linear-gradient(
+    to right,
+    oklch(85% 0.19577 140.661),
+    oklch(64.682% 0.21602 142.096)
+  );
+  --prio-medium: linear-gradient(
+    to right,
+    oklch(72.706% 0.13192 225.409),
+    oklch(53.57% 0.24563 262.164)
+  );
+  --prio-high: linear-gradient(
+    to right,
+    oklch(71.303% 0.1945 47.872),
+    oklch(62.793% 0.25768 29.223)
+  );
+  --prio-emergency: linear-gradient(
+    to right,
+    oklch(63.527% 0.25078 30.533),
+    oklch(64.64% 0.21488 30.886)
+  );
+  --completed-todo: oklch(89.545% 0.17773 156.973);
 }
 
 body {
@@ -260,6 +298,7 @@ footer {
   place-items: center;
   gap: 2rem;
   box-shadow: 2px 0px 5px var(--blue-border);
+  max-height: fit-content;
 }
 
 .image {
@@ -296,7 +335,7 @@ footer {
 
 .modal {
   margin: auto;
-  max-width: 60%;
+  width: min(50%, 50rem);
   border-radius: 15px;
   background-color: var(--bg);
   border: none;
@@ -328,11 +367,11 @@ footer {
 aside {
   min-width: fit-content;
   min-height: 100%;
-  padding: 1rem 1rem;
+  padding: 3rem 2rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   background-color: var(--bg-light);
 }
 
@@ -624,9 +663,78 @@ div.edit-project-modal-btn-container {
 }
 
 div.todo-card.completed-todo {
-  background-color: green;
+  background-color: var(--completed-todo);
+  --blue-border: oklch(68.219% 0.22304 141.582);
   > .title {
     text-decoration: line-through;
+  }
+}
+
+nav.side-bar-link-holder {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  > a {
+    width: fit-content;
+    text-decoration: var(--text-muted) underline;
+    cursor: pointer;
+    transition:
+      background-color ease-in-out 0.4s,
+      padding ease-in-out 0.4s;
+    transform-origin: bottom;
+  }
+
+  > a:hover {
+    background-color: var(--text);
+    color: var(--bg-dark);
+    padding: 0rem 1rem;
+    text-decoration: none;
+  }
+}
+
+form.new-todo-form,
+form.migrate-todo-form,
+form.edit-todo-form {
+  label {
+    width: 100%;
+  }
+
+  .btn-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.alert-div {
+  background-color: var(--danger);
+  padding: 1rem;
+  border-radius: 15px;
+  color: var(--text);
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  max-width: fit-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  gap: 2rem;
+  position: fixed;
+  top: 4rem;
+  z-index: 2000;
+
+  > .alert-text {
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  > button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    display: grid;
+    place-items: center;
+    background-color: var(--bg-light);
   }
 }
 
@@ -637,6 +745,24 @@ div.todo-card.completed-todo {
 
     section {
       width: 100%;
+    }
+  }
+
+  div.alert-div {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    transform: none;
+    left: 1rem;
+    gap: 1rem;
+
+    > .alert-text {
+      grid-area: 2/1/3/3;
+    }
+    > button {
+      grid-area: 1/2/2/3;
+      place-self: end;
+      align-self: center;
     }
   }
 
@@ -657,5 +783,9 @@ div.todo-card.completed-todo {
   nav .hamburger-menu:has(input:checked)::after {
     transform: rotate(-120deg);
     translate: 0.35rem -0.29rem;
+  }
+
+  dialog.modal {
+    min-width: 80%;
   }
 }

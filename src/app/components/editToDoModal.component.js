@@ -144,7 +144,7 @@ function makeEditToDoModal() {
     "button",
     "edit-todo-confirm-modal-btn confirm-btn button",
   );
-  confirmBtn.insertText("Add ToDo");
+  confirmBtn.insertText("Edit ToDo");
 
   cancelBtn.domElement.setAttribute("value", "cancel");
   cancelBtn.domElement.setAttribute("formmethod", "dialog");

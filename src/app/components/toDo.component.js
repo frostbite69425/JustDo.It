@@ -39,7 +39,7 @@ function toDoComponent(
 
   const doneCheckLabel = elementFactory("label", "todo-done-state-label");
   const doneCheckText = elementFactory("div", "todo-done-state-text");
-  doneCheckText.insertText("Task completed");
+  doneCheckText.insertText("Task completed:");
   const doneCheck = elementFactory("input", "todo-done-state-toggler");
   doneCheck.domElement.setAttribute("type", "checkbox");
   doneCheck.domElement.checked = todoDoneState;

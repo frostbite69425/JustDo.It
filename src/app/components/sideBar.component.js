@@ -6,6 +6,15 @@ function sideBar() {
     "aside",
     "sidebar sidebar-toggle sidebar-btn-hidden",
   );
+  const sideBarHomeBtnHolder = elementFactory(
+    "div",
+    "sidebar-home-btn-container",
+  );
+  const sideBarHomeBtn = elementFactory("button", "button home-btn");
+  sideBarHomeBtn.insertText("Home");
+
+  sideBarHomeBtnHolder.setChildren(sideBarHomeBtn.domElement);
+
   const sideBarHeader = elementFactory("div", "sidebar-header");
 
   const sideBarTitle = elementFactory("h2", "sidebar-title title");
@@ -17,11 +26,15 @@ function sideBar() {
   for (const projects of totalProjects) {
     const newLink = elementFactory("a", "project-link link");
     newLink.insertText(projects.getProjectName);
-    newLink.domElement.setAttribute("href", "");
+    newLink.domElement.setAttribute("data-uid", projects.getProjectUid);
     sideBarBtnHolder.setChildren(newLink.domElement);
   }
 
-  newSideBar.setChildren(sideBarHeader.domElement, sideBarBtnHolder.domElement);
+  newSideBar.setChildren(
+    sideBarHomeBtnHolder.domElement,
+    sideBarHeader.domElement,
+    sideBarBtnHolder.domElement,
+  );
 
   return newSideBar;
 }
