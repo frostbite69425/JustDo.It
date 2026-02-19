@@ -1,6 +1,7 @@
 import updateListener from "../../utils/uiUtils/updateListener.js";
 import selectedProjectView from "../../services/uiServices/selectedProjectView.service.js";
 import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
+import logMessage from "../../utils/appUtils/logMessage.js";
 
 function deleteTodosController(project) {
   const deleteTodosBtnNodes = document.querySelectorAll(
@@ -15,6 +16,7 @@ function deleteTodosController(project) {
         project.removeToDo(todoArr[i]);
         projectUpdater();
         selectedProjectView(project);
+        logMessage(`Task deleted permanently.`);
         break;
       }
     }

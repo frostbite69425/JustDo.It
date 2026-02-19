@@ -1,6 +1,7 @@
 import updateListener from "../../utils/uiUtils/updateListener.js";
 import projectView from "../../services/uiServices/projectView.service.js";
 import projectInitialiser from "../appControllers/projectInitialiser.controller.js";
+import logMessage from "../../utils/appUtils/logMessage.js";
 
 function addProjectsController() {
   const modal = document.querySelector(".new-project-modal");
@@ -40,6 +41,7 @@ function addProjectsController() {
     } else {
       const newProject = projectInitialiser(inputField.value);
       projectView();
+      logMessage("Project successfully added.", "success");
     }
   }
 

@@ -1,9 +1,9 @@
 import updateListener from "../../utils/uiUtils/updateListener.js";
 import selectedProjectView from "../../services/uiServices/selectedProjectView.service.js";
 import todoInitialiser from "../appControllers/todoInitialiser.controller.js";
-import Project from "../../utils/appUtils/ProjectClass.js";
 import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
 import { toDate, isFuture, startOfToday } from "date-fns";
+import logMessage from "../../utils/appUtils/logMessage.js";
 
 function addTodosController(projectInput) {
   const modal = document.querySelector(".new-todo-modal");
@@ -73,6 +73,7 @@ function addTodosController(projectInput) {
       );
       projectUpdater();
       selectedProjectView(requiredProject);
+      logMessage("Task added successfully.", "success");
     }
   }
 

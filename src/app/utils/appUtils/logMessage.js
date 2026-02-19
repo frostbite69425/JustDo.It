@@ -1,8 +1,8 @@
 import alertBox from "../../components/alert.component.js";
 
-export default (message) => {
+export default (message, alertType = "warning") => {
   const content = document.querySelector(".content");
-  const alert = alertBox(message);
+  const alert = alertBox(message, alertType);
   content.appendChild(alert.domElement);
 
   const alertBtn = document.querySelector(".alert-btn");
@@ -15,5 +15,5 @@ export default (message) => {
     if (content.contains(alert.domElement)) {
       content.removeChild(alert.domElement);
     }
-  }, 5000);
+  }, 3000);
 };

@@ -2,6 +2,7 @@ import updateListener from "../../utils/uiUtils/updateListener.js";
 import projectView from "../../services/uiServices/projectView.service.js";
 import Project from "../../utils/appUtils/ProjectClass.js";
 import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
+import logMessage from "../../utils/appUtils/logMessage.js";
 
 function editProjectsController() {
   const editProjectBtnNodes = document.querySelectorAll(".edit-project-btn");
@@ -53,6 +54,7 @@ function editProjectsController() {
           selectedProject.setProjectName = inputField.value;
           projectUpdater();
           projectView();
+          logMessage("Project edited successfully", "info");
         }
       }
     }

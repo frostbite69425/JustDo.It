@@ -62,7 +62,10 @@ function todoMigratorController(project) {
         migrateToDoForm.reset();
         projectUpdater();
         selectedProjectView(project);
-        logMessage(`Task successfully migrated to ${selectedTargetProject}`);
+        logMessage(
+          `Task successfully migrated to ${selectedTargetProject}`,
+          "success",
+        );
         break;
       }
     }

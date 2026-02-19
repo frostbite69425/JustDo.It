@@ -2,6 +2,7 @@ import updateListener from "../../utils/uiUtils/updateListener.js";
 import selectedProjectView from "../../services/uiServices/selectedProjectView.service.js";
 import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
 import { deleteSubTasks } from "../../utils/appUtils/subTasksUtility.js";
+import logMessage from "../../utils/appUtils/logMessage.js";
 
 function deleteSubtasksController(project) {
   const deleteSubtaskBtnNodes = document.querySelectorAll(".subtask-del-btn");
@@ -16,6 +17,7 @@ function deleteSubtasksController(project) {
         deleteSubTasks(todoArr[i], subTaskTitle);
         projectUpdater();
         selectedProjectView(project);
+        logMessage("Subtask deleted permanently.");
         break;
       }
     }

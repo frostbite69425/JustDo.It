@@ -3,6 +3,7 @@ import selectedProjectView from "../../services/uiServices/selectedProjectView.s
 import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
 import { isFuture, toDate } from "date-fns";
 import { setSubTasks } from "../../utils/appUtils/subTasksUtility.js";
+import logMessage from "../../utils/appUtils/logMessage.js";
 
 function editTodoController(project) {
   const editToDoBtnNodes = document.querySelectorAll(".edit-todo-btn");
@@ -90,6 +91,7 @@ function editTodoController(project) {
             editTodoForm.reset();
             projectUpdater();
             selectedProjectView(project);
+            logMessage("Task edited successfully.", "info");
 
             return;
           }

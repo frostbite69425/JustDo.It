@@ -2,6 +2,7 @@ import updateListener from "../../utils/uiUtils/updateListener.js";
 import projectView from "../../services/uiServices/projectView.service.js";
 import Project from "../../utils/appUtils/ProjectClass.js";
 import projectUpdater from "../appControllers/localStorageUpdater.controller.js";
+import logMessage from "../../utils/appUtils/logMessage.js";
 
 function deleteProjectsController() {
   const deleteProjectButtonNodes = document.querySelectorAll(
@@ -19,6 +20,7 @@ function deleteProjectsController() {
         Project.deleteProjectPermanently(selectedProject);
         projectUpdater();
         projectView();
+        logMessage(`Project deleted permanently.`);
       }
     }
   }

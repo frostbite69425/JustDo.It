@@ -41,10 +41,15 @@ function toDoComponent(
   const doneCheckText = elementFactory("div", "todo-done-state-text");
   doneCheckText.insertText("Task completed:");
   const doneCheck = elementFactory("input", "todo-done-state-toggler");
+  const doneSlider = elementFactory("div", "slider");
   doneCheck.domElement.setAttribute("type", "checkbox");
   doneCheck.domElement.checked = todoDoneState;
 
-  doneCheckLabel.setChildren(doneCheckText.domElement, doneCheck.domElement);
+  doneCheckLabel.setChildren(
+    doneCheckText.domElement,
+    doneCheck.domElement,
+    doneSlider.domElement,
+  );
 
   const toDoViewMoreBtn = elementFactory("button", "todo-view-more-btn button");
   toDoViewMoreBtn.insertText("View More");
